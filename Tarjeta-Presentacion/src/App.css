@@ -1,0 +1,37 @@
+.Container_App {
+  text-align: center;
+  background-color: #282c34;
+  color: white;
+  padding: 20px;
+}
+html, body {
+  text-align: center;
+  background-color: #282c34;
+  color: white;
+  padding: 20px;
+
+}
+
+.fecha {
+  color: #ffffff;
+  font-size: 1.2em;
+  text-align: center;
+}
+img.App-FOTO {
+  height: 40vmin;
+  pointer-events: none;
+  text-align: center;
+  border: 12px solid #5a3825; /* Color base madera oscura */
+  border-radius: 10px;
+  box-shadow:
+    0 0 5px #000 inset, /* Sombra interna para profundidad */
+    0 0 10px #000,       /* Sombra externa */
+    2px 2px 6px #2b1a12 inset, /* Sombras internas más profundas */
+    -2px -2px 6px #7b4f35 inset; /* Luces internas para relieve */
+
+  background: linear-gradient(145deg, #6b442c, #3e2416); /* Simula vetas de madera */
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
