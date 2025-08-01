@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import FormularioContacto from "./FromularioContact";
 import ListaContactos from "./listaConctact";
+import "../Componentes/agenda.css"
 
 
 function AgendaContactos() {
