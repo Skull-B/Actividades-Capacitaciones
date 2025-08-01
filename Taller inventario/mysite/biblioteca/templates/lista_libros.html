@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Libros</title>
+  <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+
+<div class="crud-container">
+  <div class="top-bar">
+    <h2>Lista de Libros</h2>
+    <a href="{% url 'agregar_libro' %}">
+      <button>+ Agregar Libro</button>
+    </a>
+  </div>
+
+  <form method="get" style="margin-top: 20px;">
+    <input  class="input_busqueda" type="text" name="q" placeholder="Buscar libros..." value="{{ query }}">
+    <button type="submit">Buscar</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Editorial</th>
+        <th>Fecha de Publicación</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for libro in libros %}
+        <tr>
+          <td>{{ libro.titulo }}</td>
+          <td>{{ libro.Autor }}</td>
+          <td>{{ libro.editorial }}</td>
+          <td>{{ libro.fecha_publicacion }}</td>
+          <td>{{ libro.estado }}</td>
+          <td>
+            <a href="{% url 'editar_libro' libro.pk %}">
+              <button>Editar</button>
+            </a>
+            
+            <a href="{% url 'detalle_libro' libro.pk %}">
+             <button>Detalles</button>
+            </a>
+          </td>
+
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="6">No se encontraron libros</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    {% if libros.has_previous %}
+      <a href="?page={{ libros.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">Anterior</a>
+    {% endif %}
+
+    Página {{ libros.number }} de {{ libros.paginator.num_pages }}
+
+    {% if libros.has_next %}
+      <a href="?page={{ libros.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Siguiente</a>
+    {% endif %}
+  </div>
+</div>
+
+</body>
+</html>
